@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QDialog" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>683</width>
+    <height>347</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>683</width>
+    <height>347</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Watermarker</string>
+  </property>
+  <property name="sizeGripEnabled">
+   <bool>false</bool>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_2">
+   <item row="0" column="0">
+    <layout class="QVBoxLayout" name="body">
+     <property name="sizeConstraint">
+      <enum>QLayout::SetMinimumSize</enum>
+     </property>
+     <item>
+      <layout class="QHBoxLayout" name="main">
+       <item>
+        <layout class="QVBoxLayout" name="file_opts">
+         <item>
+          <widget class="QLabel" name="file_label">
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Files/Directories to watermark</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="file_selector">
+           <item>
+            <widget class="QLineEdit" name="file_line"/>
+           </item>
+           <item>
+            <widget class="QPushButton" name="file_browser">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset theme="folder"/>
+             </property>
+             <property name="autoDefault">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="recursive_checkbox">
+           <property name="text">
+            <string>Recursive</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="backup_checkbox">
+           <property name="text">
+            <string>Create Backup</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="skip_if_backup_exists">
+           <property name="text">
+            <string>Skip if backup is found</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="spacer_files">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="watermark_opts">
+         <item>
+          <layout class="QVBoxLayout" name="opacity_opts">
+           <item>
+            <widget class="QLabel" name="watermark_label">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Path to watermark</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="watermark_selector">
+             <item>
+              <widget class="QLineEdit" name="watermark_line"/>
+             </item>
+             <item>
+              <widget class="QPushButton" name="watermark_browser">
+               <property name="text">
+                <string/>
+               </property>
+               <property name="icon">
+                <iconset theme="folder"/>
+               </property>
+               <property name="autoDefault">
+                <bool>false</bool>
+               </property>
+               <property name="flat">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QLabel" name="opacity_label">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Watermark Opacity</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="opacity_box">
+             <item>
+              <widget class="QSlider" name="opacity_slider">
+               <property name="maximum">
+                <number>100</number>
+               </property>
+               <property name="sliderPosition">
+                <number>50</number>
+               </property>
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="opacity_input">
+               <property name="suffix">
+                <string>%</string>
+               </property>
+               <property name="maximum">
+                <number>100</number>
+               </property>
+               <property name="value">
+                <number>50</number>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="position_opts">
+             <item>
+              <widget class="QLabel" name="position_label">
+               <property name="font">
+                <font>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>Watermark Position</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="watermark_position">
+               <item>
+                <property name="text">
+                 <string>Top Left</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Top</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Top Right</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Middle Left</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Middle</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Middle Right</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Bottom Left</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Bottom</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Bottom Right</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="margin_label">
+               <property name="font">
+                <font>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>Edge Margin</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="margin_box">
+               <item>
+                <widget class="QSlider" name="margin_slider">
+                 <property name="maximum">
+                  <number>100</number>
+                 </property>
+                 <property name="value">
+                  <number>15</number>
+                 </property>
+                 <property name="sliderPosition">
+                  <number>15</number>
+                 </property>
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QSpinBox" name="margin_input">
+                 <property name="suffix">
+                  <string>%</string>
+                 </property>
+                 <property name="maximum">
+                  <number>100</number>
+                 </property>
+                 <property name="value">
+                  <number>15</number>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QLabel" name="scale_label">
+               <property name="font">
+                <font>
+                 <family>agave Nerd Font Mono</family>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>Size</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="scale_box">
+               <item>
+                <widget class="QSlider" name="scale_slider">
+                 <property name="value">
+                  <number>25</number>
+                 </property>
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QSpinBox" name="scale_input">
+                 <property name="suffix">
+                  <string>%</string>
+                 </property>
+                 <property name="maximum">
+                  <number>100</number>
+                 </property>
+                 <property name="value">
+                  <number>25</number>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <spacer name="spacer_watermark">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="bottom_bar">
+       <item>
+        <widget class="QPushButton" name="save_settings">
+         <property name="text">
+          <string>Save Settings</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="process">
+         <property name="text">
+          <string>Process</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>opacity_slider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>opacity_input</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>564</x>
+     <y>100</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>823</x>
+     <y>108</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>margin_slider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>margin_input</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>565</x>
+     <y>200</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>822</x>
+     <y>197</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>margin_input</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>margin_slider</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>822</x>
+     <y>200</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>565</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>opacity_input</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>opacity_slider</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>823</x>
+     <y>103</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>564</x>
+     <y>105</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

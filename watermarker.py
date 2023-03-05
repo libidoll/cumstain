@@ -93,7 +93,7 @@ class Watermarker(Ui_MainWindow):
             output_file = file
 
             if backup:
-                backup_file = os.path.dirname(file) + "/.unwatermarked/backup_" + os.path.basename(file)
+                backup_file = os.path.dirname(file) + "/.unwatermarked/" + os.path.basename(file)
                 if not backup_image(file, backup_file):
                     if skip_if_backup_exists:
                         continue

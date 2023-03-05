@@ -21,6 +21,7 @@ def find_files(files, allow_videos=False, recursive=False):
                 for root, dirs, files in os.walk(file):
                     for i in files:
                         if i.endswith(tuple(image_extensions)) or (allow_videos and i.endswith(tuple(video_extensions))):
-                            yield os.path.join(root, i)
+                            if "/.unwatermarked/" not in os.path.join(root, i):
+                                yield os.path.join(root, i)
         else:
             yield file
