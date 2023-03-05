@@ -1,2 +1,4 @@
 Pillow
-argparse
+pyqt5
+moviepy
+numpy

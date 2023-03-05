@@ -1,6 +1,8 @@
 import os
 import shutil
 
+image_extensions = [".png", ".jpg", ".jpeg", ".bmp"]
+video_extensions = [".mp4", ".avi", ".mov", ".mkv", ".flv", ".wmv", ".webm"]
 
 def backup_image(file):
     backupfile = os.path.dirname(file) + "/unwatermarked/" + os.path.basename(file)
@@ -14,6 +16,13 @@ def backup_image(file):
         shutil.copyfile(file, backupfile)
 
 
-def get_files(directory):
-    return [os.path.join(directory, file) for file in os.listdir(directory) if
-            file.endswith(".jpg") or file.endswith(".png")]
+def find_files(files, allow_videos=False, recursive=False):
+    for file in files:
+        if os.path.isdir(file):
+            if recursive:
+                for root, dirs, files in os.walk(file):
+                    for i in files:
+                        if i.endswith(tuple(image_extensions)) or (allow_videos and i.endswith(tuple(video_extensions))):
+                            yield os.path.join(root, i)
+        else:
+            yield file
