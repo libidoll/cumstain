@@ -4,16 +4,14 @@ import shutil
 image_extensions = [".png", ".jpg", ".jpeg", ".bmp"]
 video_extensions = [".mp4", ".avi", ".mov", ".mkv", ".flv", ".wmv", ".webm"]
 
-def backup_image(file):
-    backupfile = os.path.dirname(file) + "/unwatermarked/" + os.path.basename(file)
-
-    if not os.path.exists(os.path.dirname(backupfile)):
-        os.makedirs(os.path.dirname(backupfile))
-    if os.path.exists(backupfile):
-        print("Using backup file instead of original")
-        shutil.copyfile(backupfile, file)
+def backup_image(file, backup_file):
+    if not os.path.exists(os.path.dirname(backup_file)):
+        os.makedirs(os.path.dirname(backup_file))
+    if os.path.exists(backup_file):
+        return False
     else:
-        shutil.copyfile(file, backupfile)
+        shutil.copyfile(file, backup_file)
+        return True
 
 
 def find_files(files, allow_videos=False, recursive=False):

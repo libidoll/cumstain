@@ -2,3 +2,4 @@ Pillow
 pyqt5
 moviepy
 numpy
+appdirs

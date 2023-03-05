@@ -14,12 +14,12 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(652, 317)
+        MainWindow.resize(728, 501)
         MainWindow.setMinimumSize(QtCore.QSize(652, 317))
         MainWindow.setSizeGripEnabled(False)
         self.gridLayout_2 = QtWidgets.QGridLayout(MainWindow)
         self.gridLayout_2.setObjectName("gridLayout_2")
-        self.body = QtWidgets.QGridLayout()
+        self.body = QtWidgets.QVBoxLayout()
         self.body.setSizeConstraint(QtWidgets.QLayout.SetMinimumSize)
         self.body.setObjectName("body")
         self.main = QtWidgets.QHBoxLayout()
@@ -53,6 +53,10 @@ class Ui_MainWindow(object):
         self.backup_checkbox.setChecked(True)
         self.backup_checkbox.setObjectName("backup_checkbox")
         self.file_opts.addWidget(self.backup_checkbox)
+        self.skip_if_backup_exists = QtWidgets.QCheckBox(MainWindow)
+        self.skip_if_backup_exists.setChecked(True)
+        self.skip_if_backup_exists.setObjectName("skip_if_backup_exists")
+        self.file_opts.addWidget(self.skip_if_backup_exists)
         spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.file_opts.addItem(spacerItem)
         self.main.addLayout(self.file_opts)
@@ -171,21 +175,25 @@ class Ui_MainWindow(object):
         self.opacity_opts.addLayout(self.position_opts)
         self.watermark_opts.addLayout(self.opacity_opts)
         self.main.addLayout(self.watermark_opts)
-        self.body.addLayout(self.main, 1, 0, 1, 1)
-        self.bottom_buttons = QtWidgets.QDialogButtonBox(MainWindow)
-        self.bottom_buttons.setOrientation(QtCore.Qt.Horizontal)
-        self.bottom_buttons.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
-        self.bottom_buttons.setObjectName("bottom_buttons")
-        self.body.addWidget(self.bottom_buttons, 2, 0, 1, 1)
+        self.body.addLayout(self.main)
+        self.bottom_bar = QtWidgets.QHBoxLayout()
+        self.bottom_bar.setObjectName("bottom_bar")
+        self.save_settings = QtWidgets.QPushButton(MainWindow)
+        self.save_settings.setObjectName("save_settings")
+        self.bottom_bar.addWidget(self.save_settings)
+        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.bottom_bar.addItem(spacerItem2)
+        self.process = QtWidgets.QPushButton(MainWindow)
+        self.process.setObjectName("process")
+        self.bottom_bar.addWidget(self.process)
+        self.body.addLayout(self.bottom_bar)
         self.gridLayout_2.addLayout(self.body, 0, 0, 1, 1)
 
         self.retranslateUi(MainWindow)
         self.opacity_slider.valueChanged['int'].connect(self.opacity_input.setValue) # type: ignore
-        self.bottom_buttons.rejected.connect(MainWindow.reject) # type: ignore
         self.margin_slider.valueChanged['int'].connect(self.margin_input.setValue) # type: ignore
         self.margin_input.valueChanged['int'].connect(self.margin_slider.setValue) # type: ignore
         self.opacity_input.valueChanged['int'].connect(self.opacity_slider.setValue) # type: ignore
-        self.bottom_buttons.accepted.connect(MainWindow.accept) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -194,6 +202,7 @@ class Ui_MainWindow(object):
         self.file_label.setText(_translate("MainWindow", "Files/Directories to watermark"))
         self.recursive_checkbox.setText(_translate("MainWindow", "Recursive"))
         self.backup_checkbox.setText(_translate("MainWindow", "Create Backup"))
+        self.skip_if_backup_exists.setText(_translate("MainWindow", "Skip if backup is found"))
         self.watermark_label.setText(_translate("MainWindow", "Path to watermark"))
         self.opacity_label.setText(_translate("MainWindow", "Watermark Opacity"))
         self.opacity_input.setSuffix(_translate("MainWindow", "%"))
@@ -211,6 +220,8 @@ class Ui_MainWindow(object):
         self.margin_input.setSuffix(_translate("MainWindow", "%"))
         self.scale_label.setText(_translate("MainWindow", "Size"))
         self.scale_input.setSuffix(_translate("MainWindow", "%"))
+        self.save_settings.setText(_translate("MainWindow", "Save Settings"))
+        self.process.setText(_translate("MainWindow", "Process"))
 
 
 if __name__ == "__main__":

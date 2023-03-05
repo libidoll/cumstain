@@ -76,7 +76,7 @@ def video_watermark(video, watermark, position, margin, scale):
     return CompositeVideoClip([video, watermark_clip])
 
 
-def add_watermark(file, watermark, opacity, position, margin, scale):
+def add_watermark(file, output_file, watermark, opacity, position, margin, scale):
     # Backup the image or use the backup if it exists
     # backup_image(file)
     scale = scale / 100
@@ -98,22 +98,12 @@ def add_watermark(file, watermark, opacity, position, margin, scale):
         # Overlay the watermark
         image_watermark(image, watermark, position, margin, scale)
 
-        # Get path of image
-        path = os.path.dirname(file)
-        # Get filename of image
-        filename = os.path.basename(file)
-
-        image.save(f'{path}/watermarked_0305_{filename}')
+        print(output_file)
+        image.save(output_file)
     elif file.lower().endswith(('.mp4', '.avi', '.mov', '.mkv', '.flv', '.wmv', '.webm')):
         video = VideoFileClip(file)
 
         output = video_watermark(video, watermark, position, margin, scale)
 
-        # Get path of image
-        path = os.path.dirname(file)
-        # Get filename of image
-        filename = os.path.basename(file)
-
-        output_file = f'{path}/watermarked_0305_{filename}'
 
         output.write_videofile(output_file)
