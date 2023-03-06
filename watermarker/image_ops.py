@@ -1,4 +1,7 @@
+import json
 import os
+import shlex
+import subprocess
 
 import numpy
 from PIL import Image, ImageChops, ImageOps, ImageSequence
@@ -71,7 +74,7 @@ def video_watermark(video, watermark, position, margin, scale):
     coordinates = get_coordinates(video.size[0], video.size[1], watermark.size[0], watermark.size[1], position, margin,
                                   scale)
 
-    watermark_clip = ImageClip(numpy.array(watermark)).set_duration(video.duration).set_pos(coordinates)
+    watermark_clip = ImageClip(numpy.array(watermark)).with_duration(video.duration).with_position(coordinates)
 
     return CompositeVideoClip([video, watermark_clip])
 
@@ -104,6 +107,5 @@ def add_watermark(file, output_file, watermark, opacity, position, margin, scale
         video = VideoFileClip(file)
 
         output = video_watermark(video, watermark, position, margin, scale)
-
 
         output.write_videofile(output_file)

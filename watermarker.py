@@ -100,8 +100,18 @@ class Watermarker(Ui_MainWindow):
                     else:
                         print("Backup already exists, using it as source")
                         file = backup_file
+                file = backup_file
+
+            else:
+                # Move file to temp location
+                os.rename(file, f"{path}/watermark_tmp_{filename}")
+                file = f"{path}/watermark_tmp_{filename}"
 
             add_watermark(file, output_file, watermark, opacity, position, margin, scale)
+
+            if not backup:
+                # Remove temp file
+                os.remove(file)
 
 
 if __name__ == "__main__":
