@@ -1,5 +1,7 @@
-# Watermarker
+# Cumstain
 Qt5 application written in Python to watermark images and videos.
+
+The "cum" stands for "Content Unique Mark". Definitely.  
 
 ![Screenshot](./resources/screenshot.png)
 
@@ -29,13 +31,16 @@ After setting your preferences you can press on "Save Settings" to save this to 
 These preferences will be loaded automatically when the application is launched.  
 
 ## Dependencies
-This project uses MoviePy to watermark videos. Specifically [this fork](https://github.com/TraseeHQ/moviepy/tree/fix_rotation) on the `fix_rotation` branch. This fixes a bug where videos with rotation metadata are not rotated correctly.  
+- Qt5
+- FFmpeg
+- MoviePy
+- Pillow
 
 If you are having trouble with running this due to dependencies, you can use the Docker image.
 
 ### Build the Docker image
 ```bash
-docker build . -t libidoll/watermarker:latest
+docker build . -t libidoll/cumstain:latest
 ```
 
 ### Run the Docker container
@@ -44,7 +49,7 @@ docker build . -t libidoll/watermarker:latest
 docker run -e DISPLAY=$DISPLAY \
   -v /tmp/.X11-unix:/tmp/.X11-unix \
   -v "XDG_CONFIG_HOME/watermarker:/root/.config/watermarker" \
-  libidoll/watermarker:latest
+  libidoll/cumstain:latest
 ```
 
 You will need to add volumes for your files. For example:
@@ -53,7 +58,7 @@ docker run -e DISPLAY=$DISPLAY \
   -v /tmp/.X11-unix:/tmp/.X11-unix \
   -v "$XDG_CONFIG_HOME/watermarker:/root/.config/watermarker" \
   -v "$HOME/Pictures:/mnt/Pictures" \
-  libidoll/watermarker:latest
+  libidoll/cumstain:latest
 ```
 
 ## License
