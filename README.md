@@ -27,7 +27,7 @@ python3 watermarker.py
 For logging output, please run it in a terminal. I will add a progress bar dialog in the future.  
 
 ## Configuration
-After setting your preferences you can press on "Save Settings" to save this to a file. The file is located in the application configuration directory and is called `settings.json`.  
+After setting your preferences you can press on "Save Settings" to save this to a file. The file is located in the application configuration directory for "watermarker" and is called `settings.json`.  
 These preferences will be loaded automatically when the application is launched.  
 
 ## Dependencies
